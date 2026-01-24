@@ -15,11 +15,11 @@ plt.show()
 
 #Compute the cost using L1 loss function
 #function to compute L1 loss
-def compute_cost_L1(x, y, theata0, theata1):
+def compute_cost_L1(x, y, theta0, theta1):
     m = len(y)
     total_cost = 0
     for i in range(m):
-        prediction = theata0 + theata1 * x[i]
+        prediction = theta0 + theta1 * x[i]
         total_cost += abs(prediction - y[i])
     return total_cost / m
 
@@ -47,7 +47,7 @@ def gradient_descent_L1(x, y, theta0, theta1, learning_rate, iterations):
         theta1 -= (learning_rate / m) * gradient1
 
         cost = compute_cost_L1(x, y, theta0, theta1)
-        cost_history.append(cost)
+        cost_history.append(cost)   
 
     return theta0, theta1, cost_history
 
@@ -137,36 +137,4 @@ plt.ylabel('theta1')
 plt.title('L1 Cost Contours (Optimum Marked)')
 plt.legend()
 plt.grid(True)
-plt.show()
-
-
-
-plt.figure(figsize=(8, 6))
-
-# L1 cost contour
-contour = plt.contour(
-    T0, T1, Jgrid,
-    levels=40,
-    cmap='viridis'
-)
-
-plt.clabel(contour, inline=True, fontsize=8)
-
-# Gradient Descent path
-plt.plot(
-    t0_path, t1_path,
-    'r-o',
-    linewidth=2,
-    markersize=4,
-    label='Gradient Descent Path'
-)
-
-# Başlangıç ve bitiş noktaları
-plt.scatter(t0_path[0], t1_path[0], c='white', edgecolors='black', s=100, label='Start')
-plt.scatter(t0_path[-1], t1_path[-1], c='red', s=100, label='End')
-
-plt.xlabel(r'$\theta_0$')
-plt.ylabel(r'$\theta_1$')
-plt.title('L1 Cost Surface with Gradient Descent Path')
-plt.legend()
 plt.show()
