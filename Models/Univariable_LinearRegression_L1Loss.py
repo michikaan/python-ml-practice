@@ -94,7 +94,6 @@ yhat2 = final_theta0 + final_theta1 * x2
 print(f"Prediction for x = {x1}: y = {yhat1}")
 print(f"Prediction for x = {x2}: y = {yhat2}")
 
--
 # L1 Cost Surface (theta0, theta1)
 
 theta0_vals = np.linspace(-10, 10, 120)
